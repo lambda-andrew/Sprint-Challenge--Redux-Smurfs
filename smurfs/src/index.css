@@ -2,4 +2,85 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #88ccff;
+}
+
+.App {
+  width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20%; 
+  margin-top: 2%;
+}
+
+.App nav {
+  width: 900px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.App nav a {
+  margin-right: 5%;
+  text-decoration: none;
+  color: black
+}
+
+.App nav a:hover {
+  cursor: pointer;
+}
+
+.App .SmurfsDiv {
+  margin-left: 25%;
+  margin-top: 5%;
+}
+
+.App .SmurfsDiv .smurfsListDiv {
+  width: 900px;
+  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.App .smurfsListDiv h3{
+  margin-left: 70px;
+}
+
+.App .smurfsListDiv .smurfCard{
+  width: 300px;
+  border-radius: 8px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%
+}
+
+.App .smurfsListDiv .smurfCard i {
+  margin-left: 275px;
+}
+
+.App .smurfFormDiv {
+  margin-top: 5%;
+}
+
+.App .smurfFormDiv h2{
+  margin-left: 15%;
+}
+
+.App .smurfFormDiv form{
+  margin-left: 3%;
+}
+
+.App .smurfFormDiv form input{
+  margin-right: 5px;
+  width: 150px;
+  height: 30px;
+}
+
+.App .smurfFormDiv form button{
+  width: 150px;
+  height: 30px;
+  font-size: 1rem;
 }

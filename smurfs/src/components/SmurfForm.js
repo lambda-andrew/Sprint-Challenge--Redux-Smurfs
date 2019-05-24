@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import { addSmurf } from '../actions'
 
+import img from './smurfs-cartoon.jpg'
+
 class SmurfForm extends React.Component {
     state = {
         smurf: {
@@ -44,6 +46,7 @@ class SmurfForm extends React.Component {
         
         return (
             <div className="smurfFormDiv">
+                <img src={img} alt='smurfs cartoon'/>
                 <h2>Add A New Smurf To The Smurf Village!</h2>
                 <form onSubmit={this.addSmurfs}>
                     <input

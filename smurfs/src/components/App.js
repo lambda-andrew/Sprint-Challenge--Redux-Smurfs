@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import './App.scss';
 
@@ -9,12 +9,16 @@ import SmurfForm from './SmurfForm';
 class App extends Component {
   render() {
     return (
+      <div className='App'>
      <Router>
-       <Link to='/'>Smurf Village</Link>
-       <Link to='/smurf-form'>Add A Smurf</Link>
-       <Route exact path='/' component={SmurfList} />
-       <Route path='/smurf-form' component={SmurfForm}/>
+        <nav>
+          <NavLink to='/'>Smurf Village</NavLink>
+          <NavLink to='/smurf-form'>Add A Smurf</NavLink>
+        </nav>
+          <Route exact path='/' component={SmurfList} />
+          <Route path='/smurf-form' component={SmurfForm}/>
      </Router>
+     </div>
     );
   }
 }
