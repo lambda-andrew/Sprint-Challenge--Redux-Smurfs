@@ -1,0 +1,12 @@
+.smurf {
+    display         : flex;
+    flex-direction  : column;
+    justify-content : center;
+    align-items     : center;
+    width           : 420px;
+    height          : 180px;
+    margin          : 20px 20px;
+    line-height     : 15px;
+    background-color: white;
+    border-radius   : 5px;
+}
