@@ -19,28 +19,48 @@ const baseURL = "http://localhost:3333";
 
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const FETCHING_SMURFS_SUCCESS = "FETCHING_SMURFS_SUCCESS";
+export const FETCHING_SMURFS_FAILURE = "FETCHING_SMURFS_FAILURE"
 
 export const getSmurfs = () => dispatch => {
   dispatch({type:FETCHING_SMURFS});
   axios.get(`${baseURL}/smurfs`)
   .then(res => {
-    console.log(res.data);
     dispatch({type: FETCHING_SMURFS_SUCCESS, payload: res.data})
   })
-  .catch(err =>
-    console.log(err))
+  .catch(err => {
+    console.log(err)
+    dispatch({type: FETCHING_SMURFS_FAILURE})
+  })
 }
 
 export const ADDING_SMURFS = "ADDING_SMURFS";
 export const ADDING_SMURFS_SUCCESS = "ADDING_SMURFS_SUCCESS";
+export const ADDING_SMURFS_FAILURE = "ADDING_SMURFS_FAILURE";
 
 export const addSmurfs = smurf => dispatch => {
   dispatch({type:ADDING_SMURFS});
   axios.post(`${baseURL}/smurfs`, smurf)
   .then(res => {
-    console.log(res.data);
     dispatch({type: ADDING_SMURFS_SUCCESS, payload: res.data})
   })
-  .catch(err =>
-    console.log(err))
+  .catch(err => {
+    console.log(err)
+    dispatch({type: ADDING_SMURFS_FAILURE})
+  })
+}
+
+export const DELETE_SMURFS = "DELETE_SMURFS";
+export const DELETE_SMURFS_SUCCESS = "DELETE_SMURFS_SUCCESS";
+export const DELETE_SMURFS_FAILURE = "DELETE_SMURFS_FAILURE";
+
+export const deleteSmurfs = id => dispatch => {
+  dispatch({type: DELETE_SMURFS});
+  axios.delete(`${baseURL}/smurfs/${id}`)
+  .then(res => {
+    dispatch({type: DELETE_SMURFS_SUCCESS, payload: res.data})
+  })
+  .catch(err => {
+    console.log(err)
+    dispatch({type: DELETE_SMURFS_FAILURE})
+  })
 }

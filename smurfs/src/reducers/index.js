@@ -16,8 +16,13 @@
 import {
   FETCHING_SMURFS,
   FETCHING_SMURFS_SUCCESS,
+  FETCHING_SMURFS_FAILURE,
   ADDING_SMURFS,
-  ADDING_SMURFS_SUCCESS
+  ADDING_SMURFS_SUCCESS,
+  ADDING_SMURFS_FAILURE,
+  DELETE_SMURFS,
+  DELETE_SMURFS_SUCCESS,
+  DELETE_SMURFS_FAILURE,
 } from '../actions';
 
 const initialState = {
@@ -44,6 +49,12 @@ const reducer = (state = initialState, action) => {
         smurfs: action.payload
       }
     }
+    case FETCHING_SMURFS_FAILURE: {
+      return {
+        ...state,
+        error: "Your Smurfs got eaten by Gargamel!"
+      }
+    }
     case ADDING_SMURFS: {
       return {
         ...state,
@@ -55,6 +66,31 @@ const reducer = (state = initialState, action) => {
         ...state,
         addingSmurfs: false,
         smurfs: action.payload
+      }
+    }
+    case ADDING_SMURFS_FAILURE: {
+      return {
+        ...state,
+        error: "Your new Smurf got eaten by Gargamel!"
+      }
+    }
+    case DELETE_SMURFS: {
+      return {
+        ...state,
+        deletingSmurfs: true,
+      }
+    }
+    case DELETE_SMURFS_SUCCESS: {
+      return {
+        ...state,
+        deletingSmurfs: false,
+        smurfs: action.payload
+      }
+    }
+    case DELETE_SMURFS_FAILURE: {
+      return {
+        ...state,
+        error: "Your deleted Smurf got saved by Papa Smurf!"
       }
     }
     default: return state;
