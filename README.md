@@ -24,8 +24,22 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
 example
+
+Actions: The application components call action creators (sometimes passing user input as parameters). Action creators perform some work then send state updates to the reducer.
+
+Reducers: Combine old state and state update received from action creators to create a new state. Note that the old state is not modified to create the new state because state is immutable (unmodifiable) in redux model. Rather new state is a completely new object that is created by reducers.
+
+Store: Holds current application state and pushes any changes to React app state.
+
+Because state stored in individual react components is no longer used to store data (with some exceptions, like input from a form the user is typing in). Rather all important state is stored in a single location (redux store). That’s why redux is called single source of truth.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Application state is needed everywhere in the app while component state is only needed in the single component. Component state can be used as a temporary storage for user input, like when a user is typing to fill in a form.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+It's middleware that allows for asynchronous action creators in Redux.
 
 ## Project Set Up
 
