@@ -1,11 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-import { getSmurfs } from '../actions'
+import { getSmurfs, deleteSmurf } from '../actions'
 
 class SmurfList extends React.Component {
+    state = {
+        deletingSmurf: null,
+      };
     componentDidMount() {
         this.props.getSmurfs()
+    }
+
+    deleteSmurfs = id => {
+        this.setState({ deletingSmurfId: id})
+        this.props.deleteSmurf(id)
     }
 
     render() {
@@ -23,9 +32,17 @@ class SmurfList extends React.Component {
                 {this.props.smurfs.map(smurf => {
                     return (
                         <div className="SmurfCard" key={smurf.id}>
+                            <i
+                                class="fas fa-times"
+                                onClick={() => this.deleteSmurfs(smurf.id)}
+                            />
                             <h4>{smurf.name}</h4>
                             <p>{smurf.age}</p>
                             <p>{smurf.height}</p>
+                            {this.props.deletingSmurf &&
+                            this.state.deletingSmurfId === smurf.id && (
+                                <p>Deleting Smurf From The Smurf Village... </p>
+                            )}
                         </div>
                     )
                 })}
@@ -36,7 +53,8 @@ class SmurfList extends React.Component {
 
 const mapStateToProps = state => ({
     smurfs: state.smurfs,
-    fetchingSmurfs: state.fetchingSmurfs
+    fetchingSmurfs: state.fetchingSmurfs,
+    deletingSmurf: state.deletingSmurf
   });
 
-  export default connect(mapStateToProps, { getSmurfs })(SmurfList)
+  export default withRouter(connect(mapStateToProps, { getSmurfs, deleteSmurf })(SmurfList))
