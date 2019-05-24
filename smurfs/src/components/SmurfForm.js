@@ -13,17 +13,8 @@ class SmurfForm extends React.Component {
     }
 
     handleChanges = e => {
-        let value = e.target.value;
-        if (e.target.name === 'age') {
-          value = parseInt(value, 10);
-        }
-        this.setState({
-            friend: {
-              ...this.state.smurf,
-              [e.target.name]: value
-            }
-        });
-    };
+        this.setState({ [e.target.name]: e.target.value});
+      };
 
     addSmurfs = e => {
         e.preventDefault()
@@ -41,10 +32,7 @@ class SmurfForm extends React.Component {
     }
 
     render() {
-        if(this.props.addingSmurf)
-            return (
-                <h2>Please Wait While We Drop Your New Smurf Into The Smurf Village...</h2>
-            )
+        
         return (
             <div className="smurfFormDiv">
                 <h2>Add A New Smurf To The Smurf Village!</h2>
@@ -77,8 +65,9 @@ class SmurfForm extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    addingSmurf: state.addingSmurf
-}
+const mapStateToProps = ({ addingSmurf }) =>({
+    addingSmurf
+})
+
 
 export default connect(mapStateToProps, { addSmurf })(SmurfForm)
