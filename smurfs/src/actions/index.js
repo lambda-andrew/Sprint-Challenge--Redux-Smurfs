@@ -15,7 +15,7 @@
 */
 import axios from 'axios';
 
-const baseURL = "http://localhost:3333/api";
+const baseURL = "http://localhost:3333";
 
 export const FETCHING_SMURFS = "FETCHING_SMURFS";
 export const FETCHING_SMURFS_SUCCESS = "FETCHING_SMURFS_SUCCESS";
