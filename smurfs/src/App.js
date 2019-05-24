@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AddSmurfForm from './components/AddSmurfForm';
 import SmurfList from './components/SmurfList';
-
+import {connect} from 'react-redux';
 
 /*
  to wire this component up you're going to need a few things.
@@ -11,6 +11,7 @@ import SmurfList from './components/SmurfList';
  */
 class App extends Component {
   render() {
+    console.log("If there's an error, it'll show here:", this.props.error)
     return (
       <div className="App">
         <h1>This is the Village!</h1>
@@ -21,4 +22,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({error}) => ({
+  error
+})
+
+export default connect(mapStateToProps)(App);
