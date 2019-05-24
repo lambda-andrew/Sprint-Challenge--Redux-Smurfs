@@ -41,6 +41,10 @@ class SmurfForm extends React.Component {
     }
 
     render() {
+        if(this.props.addingSmurf)
+            return (
+                <h2>Please Wait While We Drop Your New Smurf Into The Smurf Village...</h2>
+            )
         return (
             <div className="smurfFormDiv">
                 <h2>Add A New Smurf To The Smurf Village!</h2>

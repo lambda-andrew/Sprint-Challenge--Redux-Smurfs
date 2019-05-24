@@ -9,6 +9,7 @@ class SmurfList extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         if (this.props.fetchingSmurfs)
             return(
                 <div className='fetchingSmurfsDiv'>
@@ -21,7 +22,7 @@ class SmurfList extends React.Component {
                 <h3>Meet The Smurfs: </h3>
                 {this.props.smurfs.map(smurf => {
                     return (
-                        <div className="SmurfCard">
+                        <div className="SmurfCard" key={smurf.id}>
                             <h4>{smurf.name}</h4>
                             <p>{smurf.age}</p>
                             <p>{smurf.height}</p>
