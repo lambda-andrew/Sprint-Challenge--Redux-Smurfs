@@ -23,13 +23,16 @@ import {
   DELETE_SMURFS,
   DELETE_SMURFS_SUCCESS,
   DELETE_SMURFS_FAILURE,
+  EDIT_SMURFS,
+  EDIT_SMURFS_SUCCESS,
+  EDIT_SMURFS_FAILURE,
 } from '../actions';
 
 const initialState = {
   smurfs: [],
   fetchingSmurfs: false,
   addingSmurfs: false,
-  updatingSmurfs: false,
+  editingSmurfs: false,
   deletingSmurfs: false,
   error: ""
 }
@@ -91,6 +94,25 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         error: "Your deleted Smurf got saved by Papa Smurf!"
+      }
+    }
+    case EDIT_SMURFS: {
+      return {
+        ...state,
+        editingSmurfs: true,
+      }
+    }
+    case EDIT_SMURFS_SUCCESS: {
+      return {
+        ...state,
+        editingSmurfs: false,
+        smurfs: action.payload
+      }
+    }
+    case EDIT_SMURFS_FAILURE: {
+      return {
+        ...state,
+        error: "Your edited Smurf forgot their one role in Smurf Village"
       }
     }
     default: return state;

@@ -23,7 +23,7 @@ export const FETCHING_SMURFS_FAILURE = "FETCHING_SMURFS_FAILURE"
 
 export const getSmurfs = () => dispatch => {
   dispatch({type:FETCHING_SMURFS});
-  axios.get(`${baseURL}/smurfs`)
+  return axios.get(`${baseURL}/smurfs`)
   .then(res => {
     dispatch({type: FETCHING_SMURFS_SUCCESS, payload: res.data})
   })
@@ -39,7 +39,7 @@ export const ADDING_SMURFS_FAILURE = "ADDING_SMURFS_FAILURE";
 
 export const addSmurfs = smurf => dispatch => {
   dispatch({type:ADDING_SMURFS});
-  axios.post(`${baseURL}/smurfs`, smurf)
+  return axios.post(`${baseURL}/smurfs`, smurf)
   .then(res => {
     dispatch({type: ADDING_SMURFS_SUCCESS, payload: res.data})
   })
@@ -55,12 +55,28 @@ export const DELETE_SMURFS_FAILURE = "DELETE_SMURFS_FAILURE";
 
 export const deleteSmurfs = id => dispatch => {
   dispatch({type: DELETE_SMURFS});
-  axios.delete(`${baseURL}/smurfs/${id}`)
+  return axios.delete(`${baseURL}/smurfs/${id}`)
   .then(res => {
     dispatch({type: DELETE_SMURFS_SUCCESS, payload: res.data})
   })
   .catch(err => {
     console.log(err)
     dispatch({type: DELETE_SMURFS_FAILURE})
+  })
+}
+
+export const EDIT_SMURFS = "EDIT_SMURFS";
+export const EDIT_SMURFS_SUCCESS = "EDIT_SMURFS_SUCCESS";
+export const EDIT_SMURFS_FAILURE = "EDIT_SMURFS_FAILURE";
+
+export const editSmurfs = smurf => dispatch => {
+  dispatch({type: EDIT_SMURFS})
+  return axios.put(`${baseURL}/smurfs/${smurf.id}`, smurf)
+  .then(res => {
+    dispatch({type: EDIT_SMURFS_SUCCESS, payload: res.data})
+  })
+  .catch(err => {
+    console.log(err)
+    dispatch({type: EDIT_SMURFS_FAILURE})
   })
 }
