@@ -32,7 +32,7 @@ class SmurfList extends React.Component {
             <h2>{smurf.name}</h2>
             <h3>{smurf.age}</h3>
             <h3>{smurf.height}</h3>
-            <EditSmurfForm smurfProps={smurf} editSmurf={this.editSmurf} />
+            <EditSmurfForm smurfProps={smurf} editSmurf={this.editSmurf}/>
             <button onClick={() => {this.deleteSmurf(smurf.id)}}>Delete Smurf</button>
         </div>
         )

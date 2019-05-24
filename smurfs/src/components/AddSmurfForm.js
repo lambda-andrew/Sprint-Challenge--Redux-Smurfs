@@ -4,6 +4,7 @@ import {addSmurfs} from '../actions';
 
 class AddSmurfForm extends React.Component {
     state = {
+        addingBool: false,
         newSmurf: {
             name: "",
             age: "",
@@ -23,12 +24,32 @@ class AddSmurfForm extends React.Component {
     addSmurf = e => {
         e.preventDefault();
         this.props.addSmurfs(this.state.newSmurf);
+        this.setState({
+            newSmurf: {
+                name: "",
+                age: "",
+                height: "",
+            },
+            addingBool: false,
+        })
+    }
+
+    toggleAdd = e => {
+        e.preventDefault();
+        this.setState({
+            addingBool: true
+        })
     }
 
     render(){
+    if (!this.state.addingBool) {
+        return (
+        <button onClick={this.toggleAdd}>Click to add your Smurf!</button>
+        )
+    }
     return(
         <div>
-            <h1>This is where you add smurfs!</h1>
+            <h2>Add Your Smurf!</h2>
             <form onSubmit={this.addSmurf}>
                 <input 
                     type="text"

@@ -2,7 +2,8 @@ import React from 'react';
 
 class EditSmurfForm extends React.Component {
     state = {
-        editedSmurf: this.props.smurfProps
+        editedSmurf: this.props.smurfProps,
+        editingBool: false
     }
 
     handleChanges = e => {
@@ -16,9 +17,26 @@ class EditSmurfForm extends React.Component {
 
     editSmurf = e => {
         this.props.editSmurf(e, this.state.editedSmurf)
+        this.setState({
+            editingBool: false
+        })
+    }
+
+    toggleEdit = e => {
+        e.preventDefault();
+        this.setState({
+            editingBool: true
+        })
     }
 
     render(){
+        if (!this.state.editingBool) {
+            return (
+                <div>
+                    <button onClick={this.toggleEdit}>Edit Smurf!</button>
+                </div>
+            )
+        }
         return(
             <div>
                 <form onSubmit={this.editSmurf}>
