@@ -23,8 +23,20 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+-Actions: Think of actions as directions to a function: actions tell us which address to go to (the function), with the {type} that we pass through to the action, with the directions on how to get there (left on Main, right on First) being passed through the {payload}, this payload being whatever we update in our app.
+-Reducers: If actions are the directions, reducers are the destination; however, as state is immutable, our 'destination' is not the real destination, but a 1 to 1 clone of it. Think of your favorite chain restaurant, it may look different based upon where you go, but it has the same core menu. This is the same with reducers, they all fall back on initial state. The action that is directing to a particular clone will only affect that one reducer.
+-Store: A Javascript object containing Application State. This object is immutable, meaning it can't be modified, however, it can be copied, and that copy can be modified by using reducers and actions.
+
+Store is the "single source of truth" per its immutability, it holds all initial state for an application. No matter how many times we want to mutate a clone of the state, we can always have the original to reference.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+Component state is mutable, Application state is immutable. If we want to be able to permanently modify our state, we would use Component state. If we want to be able to reference inital state later on, we use Application state.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+Redux thunk makes oure action creators asychronous to our application; instead of everything running alongside each other at equal speed, thunk takes the time to run through several dispatches to distribute the correct sort of action.
 
 ## Project Set Up
 
