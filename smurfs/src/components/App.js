@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import './App.css';
 
-import SmurfList from './components/SmurfList';
-import SmurfForm from './components/SmurfForm';
+import SmurfList from './SmurfList';
+import SmurfForm from './SmurfForm';
 
 class App extends Component {
   render() {
